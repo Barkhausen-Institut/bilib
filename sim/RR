@@ -1,0 +1,52 @@
+clock:
+  sv: SimClock.sv
+  inc:
+    - =;helper
+    - =;time
+
+reset:
+  sv: SimReset.sv
+  inc:
+    - =;helper
+    - =;time
+
+helper:
+  sv: SimHelper.sv
+
+clockMultiplier:
+  sv: SimClockMultiplier.sv
+  inc:
+    - =;helper
+    - =;time
+
+clockDividerDco:
+  sv: SimClockDividerDco.sv
+  inc: =$bilib.clock.buffer
+
+mem:
+  sv: SimMem.sv
+
+memBit:
+  sv: SimMemBit.sv
+
+memMask:
+  sv: SimMemMask.sv
+
+memByte:
+  sv: SimMemByte.sv
+  inc: =;memMask
+
+memBig:
+  sv: SimMemBig.sv
+  c: memStore.cc
+
+time:
+  v: SimTime.v
+
+test: ++
+
+panic:
+  sv: 
+    /not SIMULATION:
+      - PanicModule.sv
+    /SIMULATION: []

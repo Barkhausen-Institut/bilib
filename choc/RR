@@ -1,0 +1,3 @@
+core:
+  pymod: python/choc
+  inc: =$bilib

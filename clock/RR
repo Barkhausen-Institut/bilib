@@ -1,0 +1,69 @@
+buffer:
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.clkbuf
+  /SYNTHESIS:
+    define: SYNTHESIS
+  /default:
+    sv: ClockBuffer.sv
+
+gate:
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.clkgate
+  /SYNTHESIS:
+    define: SYNTHESIS
+  /default:
+    sv: ClockGate.sv
+
+mux:
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.clkmux
+  /SYNTHESIS:
+    define: SYNTHESIS
+  /default:
+    sv: ClockMux.sv
+
+divider:
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.clkdiv
+  /SYNTHESIS:
+    define: SYNTHESIS
+  /default:
+    sv: ClockDivider.sv
+
+inverter:
+  sv: ClockInverter.sv
+
+dividerDynamic:
+  /RACYICS:
+    define: RACYICS
+    inc:
+      - =$racylib.common.clkdiv_by_n
+  /default:
+    sv: ClockDividerDynamic.sv
+  /XILINX_FPGA:
+    define: XILINX_FPGA
+
+resetGenerator:
+  sv: ResetGenerator.sv
+  inc: =;resetSync
+
+resetSync:
+  /default:
+    sv: ResetSync.sv
+  /RACYICS:
+    inc: =$racylib.common.reset_sync
+    define: RACYICS
+  /not RACYICS:
+    inc: =$bilib.cdc.buffer
+
+something: =$bilib.cdc.buffer
+
+sync:
+  sv: ClockSync.sv
+  inc:
+    - =;resetSync
+    - =;buffer

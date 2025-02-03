@@ -1,0 +1,23 @@
+#vars:
+#  bilib: "=:"
+axi: +axi
+fifo: +fifo
+sync_fifo: +legacy/sync_fifo
+generator: +generator
+hash: +hash
+cdc: +cdc
+clock: +clock
+coding: +coding
+memory: +memory
+#racyics: +racyics
+setting: +setting
+sim: +sim
+stdcells: +stdcells
+sico: +sico
+biset: +biset
+cdr: +cdr
+choc: +choc
+
+pymod: python/bilib
+
+test: +test

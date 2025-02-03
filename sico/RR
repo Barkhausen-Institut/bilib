@@ -1,0 +1,76 @@
+player:
+  sv: 
+    /VPI: vpi/SiCoPlayer.sv
+    /DPI: dpi/SiCoPlayer.sv
+  inc:
+    - =;core
+    - =$bilib.sim.helper
+    - =$bilib.sim.time
+
+recorder:
+  sv: 
+    /VPI: vpi/SiCoRecorder.sv
+    /DPI: dpi/SiCoRecorder.sv
+  inc: 
+    - =;core
+    - =$bilib.sim.helper
+    - =$bilib.sim.time
+
+clkdplayer:
+  sv: 
+    /VPI: vpi/SiCoClkdPlayer.sv
+    /DPI: dpi/SiCoClkdPlayer.sv
+  inc: 
+    - =;core
+    - =$bilib.sim.helper
+
+clkdrecorder:
+  sv:
+    /VPI: vpi/SiCoClkdRecorder.sv
+    /DPI: dpi/SiCoClkdRecorder.sv
+  inc: 
+    - =;core
+    - =$bilib.sim.helper
+
+ifplayer:
+  inc: 
+    - =;core
+    - =$bilib.sim.helper
+  sv: 
+    /VPI: vpi/SiCoIfPlayer.sv
+    /DPI: dpi/SiCoIfPlayer.sv
+
+ifrecorder:
+  inc: 
+    - =;core
+    - =$bilib.sim.helper
+  sv: 
+    /VPI: vpi/SiCoIfRecorder.sv
+    /DPI: dpi/SiCoIfRecorder.sv
+
+control:
+  sv:
+    /VPI: vpi/SiCoCtrl.sv
+    /DPI: dpi/SiCoCtrl.sv
+  inc:
+    - =;core
+    - =$bilib.sim.clock
+    - =$bilib.sim.reset
+    - =$bilib.sim.helper
+    - =$bilib.sim.time
+
+core:
+  c:
+    /VPI: [vpi/SiCoVpi.cc]
+    /DPI: [dpi/SiCoDpi.cc]
+    /true: [cpp/SiCo.cc]
+  sv:
+    /DPI: [dpi/SiCoCore.sv]
+    /true: []
+  path:
+    /C: [cpp]
+    /true: []
+  pymod: python/sico
+  inc: =$bilib.choc.core
+    
+test: +test

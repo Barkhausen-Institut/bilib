@@ -1,0 +1,6 @@
+sv:
+  - Spit.sv
+  - BiMemImpl.sv
+  - BiMemWmImpl.sv
+  - BiMemTpImpl.sv
+  - BiMemTpWmImpl.sv

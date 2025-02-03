@@ -1,0 +1,6 @@
+v:
+  - sync_fifo_in.v
+  - sync_fifo_out.v
+  - sync_fifo.v
+inc:
+  - =$bilib.memory.twoPort

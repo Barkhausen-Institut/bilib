@@ -1,0 +1,6 @@
+sv:
+  - axi4_mem_bridge.sv
+  - mem_axi4_bridge.sv
+  - mem_apb_bridge.sv
+inc:
+  - =;.memory.twoPort

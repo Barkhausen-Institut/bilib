@@ -1,0 +1,84 @@
+chan:
+  tool: parallel
+  sim: =;simChannel
+  py:
+    tool: Python
+    scriptFile: test_channel.py
+    inc:
+      - =$bilib.sico.core
+      - =$bilib.choc.core
+      - =$bilib
+    discover: SiCo.sock
+
+hold:
+  tool: parallel
+  sim: =;simCounter
+  py:
+    tool: Python
+    scriptFile: test_hold.py
+    inc:
+      - =$bilib.sico.core
+      - =$bilib.choc.core
+      - =$bilib
+    discover: SiCo.sock
+
+finish:
+  tool: parallel
+  sim: =;simCounter+finish
+  py:
+    tool: Python
+    scriptFile: test_finish.py
+    inc:
+      - =$bilib.sico.core
+      - =$bilib.choc.core
+      - =$bilib
+    discover: SiCo.sock
+
+wrongValue:
+  tool: parallel
+  sim: =;simChannel
+  py:
+    tool: Python
+    scriptFile: test_channel.py
+    env:
+      wrongTimeFormat: True
+    inc:
+      - =$bilib.sico.core
+      - =$bilib.choc.core
+      - =$bilib
+    discover: SiCo.sock
+
+simChannel:
+  tool:
+    /Vivado: Vivado.sim
+    /default: Icarus
+  sv: bench_channel.sv
+  toplevel: Bench
+  inc:
+    - =$bilib.sico.player
+    - =$bilib.sico.recorder
+    - =$bilib.sico.clkdplayer
+    - =$bilib.sico.clkdrecorder
+    - =$bilib.sico.ifplayer
+    - =$bilib.sico.ifrecorder
+    - =$bilib.sico.control
+    - =$bilib.sim.helper
+  expose: SiCo.sock
+
+simCounter:
+  tool:
+    /Vivado: Vivado.sim
+    /default: Icarus
+  sv: bench_counter.sv
+  toplevel: Bench
+  check: false
+  inc:
+    - =$bilib.sico.control
+  define:  
+    /finish: AUTOHOLD
+    /true: NOTHING
+  expose: SiCo.sock
+
+vivado:
+  chan: =;chan+Vivado
+  hold: =;hold+Vivado

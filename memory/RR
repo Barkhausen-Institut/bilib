@@ -1,0 +1,49 @@
+basic:
+  /default:
+    sv: BiMem.sv
+  /NOPF:
+    inc: =;.sim.mem
+    define: NOPF
+
+twoPort:
+  /default:
+    sv: BiMemTp.sv
+  /NOPF:
+    inc: =;.sim.mem
+    define: NOPF
+
+writeMask:
+  /default:
+    sv: BiMemWm.sv
+  /NOPF:
+    inc: =;.sim.memMask
+    define: NOPF
+
+twoPortWriteMask:
+  /default:
+    sv: BiMemTpWm.sv
+  /NOPF:
+    inc: =;.sim.memMask
+    define: NOPF
+
+sicoDriver:
+  sv: SiCoBiMemDriver.sv
+  inc:
+    - =$bilib.sico.ifplayer
+    - =$bilib.sico.ifrecorder
+
+sicoDriverWm:
+  sv: SiCoBiMemDriverWm.sv
+  inc:
+    - =$bilib.sico.ifplayer
+    - =$bilib.sico.ifrecorder
+
+byte: ++
+
+
+register: +register #register based memories
+list: +list #implementations that print out memory instance parameters
+test: ++
+core:
+  pymod: python/bimem.py
+  inc: =$bilib.choc.core

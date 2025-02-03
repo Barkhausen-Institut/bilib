@@ -1,0 +1,15 @@
+and2:
+  /default:
+    sv:
+      - CellAnd2.sv
+      - CellNand2.sv
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.and2
+
+mux2:
+  /default:
+    sv: CellMux2.sv
+  /RACYICS:
+    define: RACYICS
+    inc: =$racylib.common.mux

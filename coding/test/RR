@@ -1,0 +1,22 @@
+simple:
+  tool: Runner.parallel
+  sim:
+    tool: Yosys.sim
+    sv: SimpleBench.sv
+    toplevel: SimpleBench
+    inc:
+      - =......sico.recorder
+      - =......sico.player
+      - =......sico.main
+      - =.....8b10b.encode
+      - =.....8b10b.decode
+    c: SimpleBenchHelper.c
+    expose: SiCo.sock
+    #optimize: 0
+  py:
+    tool: Python
+    scriptFile: simple.py
+    inc:
+      - =......sico.core
+      - =.....8b10b.py
+    discover: SiCo.sock

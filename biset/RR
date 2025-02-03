@@ -1,0 +1,48 @@
+types:
+  sv: BiSet.sv
+
+replymux:
+  define:
+    /ICARUS: NO_NON_CONSTANT_ARRAY_ACCESS
+    /default: NODEF
+  sv: BiSetReplyMux.sv
+  inc: =;types
+
+register:
+  sv: BiSetRegister.sv
+  inc: =;types
+
+constant:
+  sv: BiSetConstant.sv
+  inc: =;types
+
+counter:
+  sv: BiSetCounter.sv
+  inc: =;types
+
+status:
+  sv: BiSetStatus.sv
+  inc: =;types
+
+regfile:
+  sv: BiSetRegFile.sv
+  inc: =;types
+
+driver:
+  sv: BiSetDriver.sv
+  inc: =;types
+
+sicoDriver:
+  sv: SiCoBiSetDriver.sv
+  inc:
+    - =;types
+    - =$bilib.sico.ifplayer
+    - =$bilib.sico.ifrecorder
+    - =;core
+
+core:
+  pymod: py/biset
+  inc:
+    - =$bilib.memory.core
+
+test: +test

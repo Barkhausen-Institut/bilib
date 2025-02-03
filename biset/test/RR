@@ -1,0 +1,32 @@
+simple:
+  tool: parallel
+  sim:
+    tool: Icarus
+    sv: SimpleBench.sv
+    toplevel: SimpleBench
+    inc:
+      - =$bilib.sico.control
+      - =$bilib.biset.types
+      - =$bilib.biset.register
+      - =$bilib.biset.regfile
+      - =$bilib.biset.constant
+      - =$bilib.biset.status
+      - =$bilib.biset.replymux
+      - =$bilib.biset.sicoDriver
+    expose: SiCo.sock
+    check: false
+  py:
+    tool: Python
+    scriptFile: simple.py
+    inc:
+      - =$bilib.sico.core
+      - =$bilib.biset.core
+    discover: SiCo.sock
+
+testSimple:
+  tool: Python
+  scriptFile: testSimple.py
+  inc:
+    - =$bilib
+    - =$bilib.memory.core
+    - =$bilib.biset.core

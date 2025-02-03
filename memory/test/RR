@@ -1,0 +1,65 @@
+simBench:
+  tool: Icarus
+  sv: bench.sv
+  toplevel: Bench
+  expose: SiCo.sock
+  flags:
+    - NOPF
+  inc:
+    - =$bilib.sico.control
+    - =$bilib.memory.basic
+    - =$bilib.memory.writeMask
+    - =$bilib.sim.mem
+    - =$bilib.memory.sicoDriver
+    - =$bilib.memory.sicoDriverWm
+    
+  check: false
+
+testAccess:
+  tool: parallel
+  sim: =;simBench
+  py:
+    tool: Python
+    scriptFile: testAccess.py
+    discover: SiCo.sock
+    inc:
+      - =$bilib.choc.core
+      - =$bilib.sico.core
+      - =$bilib.memory.core
+      - =$bilib
+
+testMemory:
+  tool: Python
+  scriptFile: testMemory.py
+  inc:
+    - =$bilib.choc.core
+    - =$bilib.sico.core
+    - =$bilib.memory.core
+    - =$bilib
+
+byteSim:
+  tool: Icarus
+  sv: byteBench.sv
+  toplevel: ByteBench
+  expose: SiCo.sock
+  flags:
+    - NOPF
+  inc:
+    - =$bilib.sico.control
+    - =$bilib.memory.byte.mem
+    - =$bilib.memory.byte.convert
+    - =$bilib.memory.sicoDriverWm
+  check: False
+
+testByte:
+  tool: parallel
+  sim: =;byteSim
+  test:
+    tool: Python
+    scriptFile: testByteAccess.py
+    inc:
+      - =$bilib.choc.core
+      - =$bilib.sico.core
+      - =$bilib.memory.core
+      - =$bilib
+    discover: SiCo.sock

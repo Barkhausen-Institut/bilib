@@ -1,0 +1,29 @@
+buffer:
+  /RACYICS:
+    inc: =$racylib.common.sync
+    define: RACYICS
+  /XILINX_FPGA:  #FIXME that should be XILINX && SYNTH?
+    define: XILINX_FPGA
+  /default:
+    sv: CdcBuffer.sv
+
+mutex:
+  sv: CdcMutex.sv
+  inc: =;buffer
+
+event:
+  sv: CdcEvent.sv
+  inc: =;mutex
+
+gate:
+  sv: CdcGate.sv
+  inc: =;mutex
+
+stream:
+  sv: CdcStream.sv
+  inc:
+    - =;buffer
+    - =;.coding.grey.encode
+    - =;.coding.grey.decode
+
+test: +test

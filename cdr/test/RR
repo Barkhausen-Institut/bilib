@@ -1,0 +1,15 @@
+simple:
+  tool: Icarus
+  sv: Bench.sv
+  toplevel: Bench
+  timescale: 1ps/1ps
+  inc:
+    - =....datarecover8
+    - =....oversampler8
+    - =.....sim.clock
+    - =.....sim.reset
+    - =.....sim.clockDividerDco
+    - =.....clock.resetGenerator
+    - =.....coding.8b10b.types
+    - =.....coding.8b10b.serialize
+    - =.....coding.8b10b.deserialize

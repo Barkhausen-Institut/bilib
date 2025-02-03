@@ -1,0 +1,24 @@
+simple:
+  tool: Runner.parallel
+  sim:
+    tool: Yosys.sim
+    sv: SimpleBench.sv
+    toplevel: SimpleBench
+    inc:
+      - =......sico.recorder
+      - =......sico.player
+      - =......sico.clkdrecorder
+      - =......sico.clkdplayer
+      - =.....buffer
+      - =.....mutex
+      - =.....event
+      - =.....gate
+      - =.....stream
+      - =......sico.main
+    expose: SiCo.sock
+  py:
+    tool: Python
+    scriptFile: simple.py
+    inc:
+      - =......sico.core
+    discover: SiCo.sock

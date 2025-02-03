@@ -1,0 +1,43 @@
+mem:
+  sv: ByteMem.sv
+  inc: =;.writeMask
+
+mux:
+  sv: ByteMux.sv
+
+mux2:
+  sv: ByteMux2.sv
+  inc: =;mux
+
+mux3:
+  sv: ByteMux3.sv
+  inc: =;mux
+
+mux4:
+  sv: ByteMux4.sv
+  inc: =;mux
+
+demux:
+  sv: ByteDemux.sv
+
+demux2:
+  sv: ByteDemux2.sv
+  inc: =;demux
+
+demux3:
+  sv: ByteDemux3.sv
+  inc: =;demux
+
+demux4:
+  sv: ByteDemux4.sv
+  inc: =;demux
+
+convert:
+  sv: ByteConvert.sv
+
+compile:
+  convert:
+    tool: Icarus
+    inc: =;convert
+    toplevel: ByteConvert
+    check: False

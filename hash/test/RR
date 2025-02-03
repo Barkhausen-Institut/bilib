@@ -1,0 +1,24 @@
+crc:
+  tool: Runner.parallel
+  sim: =..crc_sim
+  py: =..crc_py
+
+crc_sim:
+  tool: Yosys.sim
+  sv: CrcTestBench.sv
+  c: CrcTestBenchHelper.c
+  toplevel: CrcTestBench
+  inc:
+    - =....crc
+    - =.....sico.clkdrecorder
+    - =.....sico.clkdplayer
+    - =.....sico.main
+  expose: SiCo.sock
+
+crc_py:
+  tool: Python
+  scriptFile: CrcTest.py
+  inc:
+    - =.....sico.core
+    - =....crc
+  discover: SiCo.sock

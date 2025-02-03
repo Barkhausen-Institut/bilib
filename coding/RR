@@ -1,0 +1,24 @@
+8b10b:
+  types:
+    sv: _8b10b.sv
+  encode:
+    sv: _8b10bEncode.sv
+    inc: =;8b10b.types
+  decode:
+    sv: _8b10bDecode.sv
+    inc: =;8b10b.types
+  serialize:
+    sv: _8b10bSerialize.sv
+    inc: =;8b10b.types
+  deserialize:
+    sv: _8b10bDeserialize.sv
+    inc: =;8b10b.types
+  pymod: py/_8b10b/
+
+grey:
+  encode:
+    sv: GreyEncode.sv
+  decode:
+    sv: GreyDecode.sv
+
+test: +test

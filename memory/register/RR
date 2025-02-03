@@ -1,0 +1,11 @@
+basic:
+  sv: RegMem.sv
+
+writemask:
+  sv: RegMemWm.sv
+
+twoport:
+  sv: RegMemTp.sv
+
+twoport_writemask:
+  sv: RegMemTpWm.sv

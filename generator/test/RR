@@ -1,0 +1,22 @@
+prng:
+  tool: Runner.parallel
+  sim: =..prng_sim
+  py: =..prng_py
+
+prng_sim:
+  tool: Yosys
+  sv: PrngTestBench.sv
+  toplevel: PrngTestBench
+  inc:
+    - =....prng
+    - =.....sico.recorder
+    - =.....sico.main
+  expose: SiCo.sock
+
+prng_py:
+  tool: Python
+  scriptFile: PrngTest.py
+  inc:
+    - =.....sico.core
+    - =....prng
+  discover: SiCo.sock

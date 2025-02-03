@@ -1,0 +1,13 @@
+datarecover8:
+  sv: DataRecover8.sv
+
+oversampler8:
+  /SIMULATION:
+    define: SIMULATION
+  /default:
+    sv: OverSampler8.sv
+  
+serializerDDR:
+  sv: SerializerDDR.sv
+
+test: +test

@@ -1,0 +1,6 @@
+basic:
+  sv: Fifo.sv
+  inc: =;.memory.twoPort
+
+peek:
+  sv: PeekBuffer.sv

@@ -1,0 +1,7 @@
+/rres
+/rrun
+/.vscode
+.svlint.toml
+.envrc
+/.direnv
+__pycache__

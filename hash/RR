@@ -1,0 +1,5 @@
+crc:
+  sv: CyclicRedundancyCheck.sv
+  pymod: hash.py
+
+test: +test
